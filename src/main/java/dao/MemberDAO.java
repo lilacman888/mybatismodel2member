@@ -27,7 +27,7 @@ public class MemberDAO {
 		try {
 			reader = Resources.getResourceAsReader("mybatis-config.xml");
 			SqlSessionFactory sf = new SqlSessionFactoryBuilder().build(reader);
-			session = sf.openSession(true);
+			session = sf.openSession(true);			// auto commit0111111111111111111
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -196,8 +196,10 @@ public class MemberDAO {
 	}
 	
 	// 회원정보 수정
-	public int update(MemberDTO member) {
+	public int update(MemberDTO member) throws Exception{
 		int result = 0;
+		SqlSession session = getSession();
+		result = session.update("update",member);
 //		Connection con = null;
 //		PreparedStatement pstmt = null;
 //		try {
@@ -234,8 +236,10 @@ public class MemberDAO {
 		return result;
 	}
 	// 회원탈퇴
-	public int delete(String id) {
+	public int delete(String id) throws Exception {
 		int result = 0;
+		SqlSession session = getSession();
+		result = session.delete("delete", id);
 //		Connection con = null;
 //		PreparedStatement pstmt = null;
 //		

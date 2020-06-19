@@ -16,6 +16,18 @@
 		select * from member0609 where id = #{id}
 	</select>
 
+	<!-- 회원정보 수정 -->
+	<update id="update" parameterType="member">
+		update member0609 set name=#{name}, jumin1=#{jumin1},
+		jumin2=#{jumin2},mailid=#{mailid},domain=#{domain},
+		tel1=#{tel1},tel2=#{tel2},tel3=#{tel3},phone1=#{phone1},
+		phone2=#{phone2},phone3=#{phone3},post=#{post},address=#{address},
+		gender=#{gender},hobby=#{hobby},intro=#{intro} where id=#{id}
+	</update>
+	
+	<delete id="delete" parameterType="String">
+		delete from member0609 where id=#{id}
+	</delete>
 <!-- 	<select id="getSomething" parameterType="int" resultType="#package.#modelname">
 		SELECT
 		columnname1,
